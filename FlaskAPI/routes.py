@@ -6,11 +6,13 @@ from FlaskAPI.colorize import colorize
 
 @app.route("/")
 def index():
-    return render_template("upload.html")
+    ##return render_template("upload.html")
+    return "Hello"
 
 @app.route("/upload",methods=['POST'])
 def upload():
-    file = request.files['file']
+    print(request)
+    file = request.files['photo']
     print(file)
     ori_name,extension = os.path.splitext(file.filename)
     #print(ori_name)
@@ -36,7 +38,8 @@ def upload():
 
 ## Returning the required fetch info ##
 ## to user for the next step ##
-    return render_template("image_show.html", image_name=image.stored_name)
+    return image.stored_name
+    #return render_template("image_show.html", image_name=image.stored_name)
 
 @app.route("/colored/<filename>")
 def getColored(filename):

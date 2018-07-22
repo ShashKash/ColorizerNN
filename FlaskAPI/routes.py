@@ -44,3 +44,7 @@ def upload():
 @app.route("/colored/<filename>")
 def getColored(filename):
     return send_from_directory("colored_images", filename)
+
+@app.route("/original/<filename>")
+def getOriginal(filename):
+    return send_from_directory("images", filename)

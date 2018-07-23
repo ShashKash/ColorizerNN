@@ -20,6 +20,7 @@ def upload():
 
 ## Saving the b/w image in original_target##
     imageId = str(Images.query.count()+1)
+    print(imageId)
     ori_storage_name = imageId+extension
     destination_bw = "/".join([original_target,ori_storage_name])
     print(destination_bw)

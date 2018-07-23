@@ -19,10 +19,11 @@ def upload():
     #print(extension)
 
 ## Saving the b/w image in original_target##
-    ori_storage_name = str(Images.query.count()+1)+extension
+    imageId = str(Images.query.count()+1)
+    ori_storage_name = imageId+extension
     destination_bw = "/".join([original_target,ori_storage_name])
     print(destination_bw)
-    col_storage_name = 'col_' + str(Images.query.count()+1) + '.png'
+    col_storage_name = 'col_' + imageId + '.png'
     file.save(destination_bw)
     destination_col = "/".join([colored_target,col_storage_name])
     print(destination_col)
@@ -38,7 +39,7 @@ def upload():
 
 ## Returning the required fetch info ##
 ## to user for the next step ##
-    return image.stored_name
+    return imageId
     #return render_template("image_show.html", image_name=image.stored_name)
 
 @app.route("/colored/<filename>")
